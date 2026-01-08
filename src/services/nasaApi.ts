@@ -4,6 +4,11 @@ type GetApodParams = {
   date?: string;
 };
 
+type GetNeoParams = {
+  startDate: string;
+  endDate: string;
+};
+
 export async function getApod(params?: GetApodParams) {
   const query = new URLSearchParams({
     api_key: api_key,
@@ -16,6 +21,27 @@ export async function getApod(params?: GetApodParams) {
 
   if (!response.ok) {
     throw new Error("Erro ao buscar dados da NASA");
+  }
+
+  return response.json();
+}
+
+export async function getNearEarthObjects({
+  startDate,
+  endDate,
+}: GetNeoParams) {
+  const query = new URLSearchParams({
+    api_key: api_key,
+    start_date: startDate,
+    end_date: endDate,
+  });
+
+  const response = await fetch(
+    `https://api.nasa.gov/neo/rest/v1/feed?${query.toString()}`
+  );
+
+  if (!response.ok) {
+    throw new Error("Erro ao buscar asteroides próximos da Terra");
   }
 
   return response.json();

@@ -27,6 +27,9 @@ export default function Header() {
           <Link to="/image" className={linkClass("/image")}>
             APOD
           </Link>
+          <Link to="/asteroids" className={linkClass("/asteroids")}>
+            Asteroides
+          </Link>
         </nav>
       </div>
     </header>
