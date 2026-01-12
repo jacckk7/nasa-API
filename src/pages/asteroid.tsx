@@ -24,7 +24,7 @@ type AsteroidDetails = {
   }[];
 };
 
-export function Asteroid() {
+export default function Asteroid() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
 
