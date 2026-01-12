@@ -2,7 +2,6 @@ import { getAsteroidById } from "@/services/nasaApi";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-
 type AsteroidDetails = {
   name: string;
   nasa_jpl_url: string;
@@ -52,7 +51,10 @@ export function Asteroid() {
 
   return (
     <div className="p-6 max-w-4xl mx-auto">
-      <button onClick={() => navigate(-1)} className="text-primary hover:underline cursor-pointer mb-4">
+      <button
+        onClick={() => navigate(-1)}
+        className="text-primary hover:underline cursor-pointer mb-4"
+      >
         ← Voltar
       </button>
 
@@ -82,9 +84,10 @@ export function Asteroid() {
           <p>
             Minimum distance from Earth:{" "}
             <strong>
-              {Number(
-                approach?.miss_distance.kilometers
-              ).toLocaleString("pt-BR")} km
+              {Number(approach?.miss_distance.kilometers).toLocaleString(
+                "pt-BR",
+              )}{" "}
+              km
             </strong>
           </p>
 
@@ -92,8 +95,9 @@ export function Asteroid() {
             Relative velocity:{" "}
             <strong>
               {Number(
-                approach?.relative_velocity.kilometers_per_hour
-              ).toLocaleString("pt-BR")} km/h
+                approach?.relative_velocity.kilometers_per_hour,
+              ).toLocaleString("pt-BR")}{" "}
+              km/h
             </strong>
           </p>
 
@@ -102,10 +106,10 @@ export function Asteroid() {
           </p>
         </div>
 
-        <a 
-          href={data.nasa_jpl_url} 
-          target="_blank" 
-          rel="noopener noreferrer" 
+        <a
+          href={data.nasa_jpl_url}
+          target="_blank"
+          rel="noopener noreferrer"
           className="text-primary hover:underline cursor-pointer"
         >
           View on NASA website ↗

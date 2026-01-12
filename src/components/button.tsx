@@ -13,8 +13,7 @@ export default function Button({
     <button
       onClick={onClick}
       disabled={disabled}
-      className={
-        `
+      className={`
           py-3
           rounded-xl
           font-medium
@@ -24,8 +23,7 @@ export default function Button({
               ? "bg-bg-elevated border border-border text-text-muted cursor-not-allowed"
               : "bg-primary hover:bg-primary-hover hover:cursor-pointer text-white"
           }
-        `
-      }
+        `}
     >
       {label}
     </button>

@@ -10,11 +10,17 @@ export default function Home() {
         <h1 className="text-3xl font-bold mb-8">Explore NASA API 🌌</h1>
 
         <div className="grid gap-4">
-          <Button label="Astronomy Picture of the Day" onClick={() => navigate("/image")} />
-          <Button label="Asteroids Near Earth" onClick={() => navigate("/asteroids")} />
+          <Button
+            label="Astronomy Picture of the Day"
+            onClick={() => navigate("/image")}
+          />
+          <Button
+            label="Asteroids Near Earth"
+            onClick={() => navigate("/asteroids")}
+          />
           <Button label="Em breve 🚀" onClick={() => {}} disabled />
         </div>
       </div>
     </div>
-  )
+  );
 }

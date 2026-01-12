@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 export default function Header() {
   const location = useLocation();
 
-  const linkClass = (path:string) =>
+  const linkClass = (path: string) =>
     `
       px-3 py-2 rounded-lg transition
       ${

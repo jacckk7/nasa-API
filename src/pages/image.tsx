@@ -87,7 +87,7 @@ export default function Image() {
             <p className="text-text-secondary mb-4">{formatDate(data.date)}</p>
 
             {data?.media_type === "image" ? (
-              <img 
+              <img
                 src={data.url}
                 alt={data.title}
                 className="rounded-lg mb-4 max-h-125 mx-auto"
@@ -100,7 +100,9 @@ export default function Image() {
               />
             )}
 
-            <p className="text-text-secondary text-justify">{data?.explanation}</p>
+            <p className="text-text-secondary text-justify">
+              {data?.explanation}
+            </p>
           </div>
         )}
       </div>

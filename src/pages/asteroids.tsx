@@ -12,7 +12,7 @@ type Asteroid = {
       kilometers: string;
     };
     relative_velocity: {
-      kilometers_per_hour:string;
+      kilometers_per_hour: string;
     };
   }[];
 };
@@ -44,9 +44,7 @@ export default function Asteroids() {
 
   return (
     <div className="p-6 max-w-6xl mx-auto">
-      <h1 className="text-3xl font-bold mb-6">
-        Asteroids Near Earth ☄️
-      </h1>
+      <h1 className="text-3xl font-bold mb-6">Asteroids Near Earth ☄️</h1>
 
       {loading && <p>Loading data...</p>}
       {error && <p className="text-error">{error}</p>}
@@ -56,7 +54,7 @@ export default function Asteroids() {
           const approach = asteroid.close_approach_data[0];
 
           return (
-            <div 
+            <div
               key={asteroid.id}
               onClick={() => navigate(`/asteroids/${asteroid.id}`)}
               className="
@@ -70,27 +68,24 @@ export default function Asteroids() {
               "
             >
               <div className="flex items-center justify-between mb-2">
-                <h2 className="text-xl font-semibold">
-                  {asteroid.name}
-                </h2>
+                <h2 className="text-xl font-semibold">{asteroid.name}</h2>
 
                 {asteroid.is_potentially_hazardous_asteroid ? (
                   <span className="text-error font-medium">
                     Potentially dangerous
                   </span>
                 ) : (
-                  <span className="text-success font-medium">
-                    Safe
-                  </span>
+                  <span className="text-success font-medium">Safe</span>
                 )}
               </div>
 
               <p className="text-text-secondary">
                 Distance from Earth:{" "}
                 <strong>
-                  {Number(
-                    approach?.miss_distance.kilometers
-                  ).toLocaleString("pt-BR")} km
+                  {Number(approach?.miss_distance.kilometers).toLocaleString(
+                    "pt-BR",
+                  )}{" "}
+                  km
                 </strong>
               </p>
 
@@ -98,8 +93,9 @@ export default function Asteroids() {
                 Velocity:{" "}
                 <strong>
                   {Number(
-                    approach?.relative_velocity.kilometers_per_hour
-                  ).toLocaleString("pt-BR")} km/h
+                    approach?.relative_velocity.kilometers_per_hour,
+                  ).toLocaleString("pt-BR")}{" "}
+                  km/h
                 </strong>
               </p>
             </div>
