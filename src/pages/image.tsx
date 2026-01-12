@@ -74,11 +74,11 @@ export default function Image() {
               transition
             "
           >
-            Buscar
+            Search
           </button>
         </div>
 
-        {loading && <p>Carregando...</p>}
+        {loading && <p>Loading...</p>}
         {error && <p>{error}</p>}
 
         {data && !loading && (

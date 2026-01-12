@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getNearEarthObjects } from "../services/nasaApi";
+import { useNavigate } from "react-router-dom";
 
 type Asteroid = {
   id: string;
@@ -17,6 +18,8 @@ type Asteroid = {
 };
 
 export default function Asteroids() {
+  const navigate = useNavigate();
+
   const [asteroids, setAsteroids] = useState<Asteroid[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -45,7 +48,7 @@ export default function Asteroids() {
         Asteroids Near Earth ☄️
       </h1>
 
-      {loading && <p>Carregando dados...</p>}
+      {loading && <p>Loading data...</p>}
       {error && <p className="text-error">{error}</p>}
 
       <div className="grid gap-4">
@@ -55,7 +58,16 @@ export default function Asteroids() {
           return (
             <div 
               key={asteroid.id}
-              className="bg-bg-secondary border border-border rounded-xl p-6"
+              onClick={() => navigate(`/asteroids/${asteroid.id}`)}
+              className="
+                bg-bg-secondary 
+                border border-border 
+                rounded-xl 
+                p-6
+                cursor-pointer
+                hover:bg-bg-elevated
+                transition
+              "
             >
               <div className="flex items-center justify-between mb-2">
                 <h2 className="text-xl font-semibold">
@@ -64,17 +76,17 @@ export default function Asteroids() {
 
                 {asteroid.is_potentially_hazardous_asteroid ? (
                   <span className="text-error font-medium">
-                    Potencialmente perigoso
+                    Potentially dangerous
                   </span>
                 ) : (
                   <span className="text-success font-medium">
-                    Seguro
+                    Safe
                   </span>
                 )}
               </div>
 
               <p className="text-text-secondary">
-                Distância da Terra:{" "}
+                Distance from Earth:{" "}
                 <strong>
                   {Number(
                     approach?.miss_distance.kilometers
@@ -83,7 +95,7 @@ export default function Asteroids() {
               </p>
 
               <p className="text-text-secondary">
-                Velocidade:{" "}
+                Velocity:{" "}
                 <strong>
                   {Number(
                     approach?.relative_velocity.kilometers_per_hour

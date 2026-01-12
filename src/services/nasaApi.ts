@@ -46,3 +46,13 @@ export async function getNearEarthObjects({
 
   return response.json();
 }
+
+export async function getAsteroidById(id: string) {
+  const response = await fetch(`https://api.nasa.gov/neo/rest/v1/neo/${id}?api_key=${api_key}`);
+
+  if (!response.ok) {
+    throw new Error("Erro ao buscar detalhes do asteroide");
+  }
+
+  return response.json();
+}
